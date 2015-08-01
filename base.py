@@ -32,4 +32,6 @@ def PlayEpisode(env, agent):
     while state is not None:
         action = agent.ChooseAction(state)
         total_reward += env.ProcessAction(action)
+        state = env.GetState()
+        
     return total_reward
