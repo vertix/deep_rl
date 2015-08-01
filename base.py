@@ -18,6 +18,7 @@ class Environment(object):
     """Performs one step given selected action. Returns step reward."""
     raise NotImplementedError
 
+
 class Agent(object):
   """Base class for different agents."""
   def __init__(self):
@@ -25,6 +26,7 @@ class Agent(object):
 
   def ChooseAction(self, state):
     pass
+
 
 def PlayEpisode(env, agent):
   state = env.GetState()

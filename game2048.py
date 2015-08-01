@@ -3,12 +3,13 @@ import matplotlib.pyplot as plt
 from matplotlib import colors
 import random
 import sys
+import theano
 
 import base
 
 class Game2048(base.Environment):
   def __init__(self, seed=None):
-    self._state = np.zeros([4, 4])
+    self._state = np.zeros([4, 4], dtype=theano.config.floatX)
     # Set up the start position
     self._state[1, 1] = 1
     self._state[2, 2] = 1
@@ -39,7 +40,7 @@ class Game2048(base.Environment):
         reward = 2. ** (clean_row[i] + 1)
         i += 2
 
-    return np.array(result + [0] * (4 - len(result))), reward
+    return np.array(result + [0] * (4 - len(result)), dtype=row.dtype), reward
 
 
   def ProcessAction(self, action):
